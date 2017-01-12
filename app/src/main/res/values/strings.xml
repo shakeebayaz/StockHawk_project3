@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Stock Hawk</string>
+    <string name="app_name" translatable="false">Stock-Hawk Project 3</string>
 
     <string name="action_example">Example action</string>
 
@@ -9,7 +9,7 @@
     <string name="content_test">Search for a Stock Symbol</string>
     <string name="input_hint">FB</string>
     <string name="input_prefill" />
-    <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+    <string name="network_toast">This app requires an internet connection</string>
     <string name="example_bid_price" translatable="false">1000.00</string>
     <string name="example_bid_change" translatable="false">100%</string>
     <string name="example_stock_symbol" translatable="false">GOOG</string>
@@ -17,4 +17,45 @@
     <string name="stock_is_saved">This stock is already saved!</string>
     <string name="appwidget_text">STOCK PRICES</string>
     <string name="add_widget">Add widget</string>
+    <string name="progress_msg">Please wait</string>
+    <string name="add_stock" translatable="true">Add New stock</string>
+    <string name="stock_not_available" translatable="true">Stock Not Available!</string>
+    <string name="graph_description" translatable="true">Graph showing prices of the stock over time!</string>
+
+    <string name="equity_name" translatable="true">Stock Name</string>
+    <string name="equity_sym" translatable="true">Stock Symbol</string>
+
+    <string name="curr" translatable="true">Currency</string>
+    <string name="d_low" translatable="true">Day\'s low</string>
+    <string name="d_hig" translatable="true">Day\'s high</string>
+    <string name="year_low" translatable="true">Year\'s low</string>
+    <string name="year_high" translatable="true">Year\'s high</string>
+    <string name="last_tradedate" translatable="true">Last Trade Date</string>
+    <string name="fetching_history" translatable="true">Fetching stock history...</string>
+    <string name="equity" translatable="false">Equity</string>
+    <string name="last_one_year" translatable="true">Last one year euity Comparison</string>
+    <string name="list_equity" translatable="true">List of Equity</string>
+    <string name="units_description" translatable="true">Change in % increase or decrease to actual increase or decrease</string>
+    <string name="no_data_show" translatable="true">No data to show</string>
+    <string name="retry" translatable="true">Retry</string>
+    <string name="equity_added_no_internet" translatable="true">Equity added. Will refresh when network is available.</string>
+    <string name="change_unit_description" translatable="true">Change from % increase or decrease to actual increase or decrease</string>
+
+
+    <string name="popup_title" translatable="true">Add Stock</string>
+    <string name="popup_hint" translatable="false">Symbol (e.g. MSFT)</string>
+    <string name="popup_cancel" translatable="true">Cancel</string>
+    <string name="popup_add" translatable="true">Add</string>
+    <string name="space" translatable="true"> </string>
+
+    <dimen name="widget_text_size">24sp</dimen>
+    <dimen name="padding_3dp">2dp</dimen>
+    <dimen name="padding_10dp">8sp</dimen>
+    <string name="stock_widget_name">Stock Widget</string>
+
+    <dimen name="widget_width">350dp</dimen>
+    <dimen name="widget_height">250dp</dimen>
+
+    <dimen name="widget_resize_width">180dp</dimen>
+    <dimen name="widget_resize_height">90dp</dimen>
 </resources>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sam_chordas.android.stockhawk">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.digital.ayaz.stockhawk">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        tools:ignore="GoogleAppIndexingWarning"
         android:theme="@style/AppTheme">
         <uses-permission android:name="android.permission.INTERNET" />
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -18,46 +20,46 @@
 
         <uses-permission android:name="com.google.android.gcm.demo.permission.C2D_MESSAGE" />
 
-        <activity
-            android:name=".ui.MyStocksActivity"
-            android:label="@string/app_name">
+        <activity android:name="com.digital.ayaz.stockhawk.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.StockDetailActivity" />
+        <activity android:name="com.digital.ayaz.stockhawk.ui.StockDetails"/>
 
         <service
-            android:name=".service.StockTaskService"
-            android:exported="true"
-            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
-            <intent-filter>
-                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
-            </intent-filter>
-        </service>
-        <service android:name=".service.StockIntentService" />
-        <service
-            android:name=".service.StockWidgetRemoteViewsService"
-            android:enabled="true"
-            android:exported="false"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
-
-        <provider
-            android:name=".data.generated.QuoteProvider"
-            android:authorities="com.sam_chordas.android.stockhawk.data.QuoteProvider"
+            android:name="com.digital.ayaz.stockhawk.sync.StockIntentService"
             android:exported="false" />
 
-        <receiver android:name=".StockInfoWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
+        <provider
+            android:name="com.digital.ayaz.stockhawk.data.StockProvider"
+            android:authorities="com.digital.ayaz.stock"
+            android:exported="false" />
 
+        <service
+            android:name="com.digital.ayaz.stockhawk.sync.QuoteJobService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <receiver android:name="com.digital.ayaz.stockhawk.ui.widgets.StockWidgetProvider"
+            android:label="@string/stock_widget_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.example.sam_chordas.stockhawk.STOCK_DATA_UPDATE"/>
+            </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/stock_info_widget_info" />
+                android:resource="@xml/stock_info_widget_info"
+                />
         </receiver>
+        <service android:name="com.digital.ayaz.stockhawk.ui.widgets.StockWidgetRemoteViewService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS">
+        </service>
 
     </application>
 
