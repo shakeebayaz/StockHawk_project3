@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.databinding.DataBindingUtil;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -42,7 +40,7 @@ public class MainActivity extends BaseActivity implements LoaderManager.LoaderCa
     @Override
     public void onClick(Cursor cursor, int position) {
         if (cursor.moveToPosition(position)) {
-            Intent intent = new Intent(MainActivity.this, StockDetails.class);
+            Intent intent = new Intent(MainActivity.this, StockDetailsActivity.class);
             intent.putExtra(Constants.EXTRA_EQUITY_NAME, adapter.getSymbolAtPosition(position));
             startActivity(intent);
         }

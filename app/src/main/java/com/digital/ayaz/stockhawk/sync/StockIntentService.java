@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.digital.ayaz.stockhawk.R;
 import com.digital.ayaz.stockhawk.data.Constants;
-import com.digital.ayaz.stockhawk.ui.StockDetails;
+import com.digital.ayaz.stockhawk.ui.StockDetailsActivity;
 
 import yahoofinance.Stock;
 
@@ -35,7 +35,7 @@ public class StockIntentService extends IntentService {
         } else if (intent.getBooleanExtra(Constants.IS_GET_HISTORY, false)) {
             String symbol = intent.getStringExtra(Constants.EXTRA_SYMBOL);
             Stock stock = QuoteSyncJob.getHistory(symbol);
-            StockDetails.stock = stock;
+            StockDetailsActivity.mStock = stock;
             Intent dataUpdatedIntent = new Intent(QuoteSyncJob.ACTION_STOCK_HISTORY);
             LocalBroadcastManager.getInstance(this).sendBroadcast(dataUpdatedIntent);
 

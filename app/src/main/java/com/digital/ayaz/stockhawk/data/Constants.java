@@ -11,4 +11,5 @@ public interface Constants {
     String IS_STOCK_EXIST="is_equity_exist";
     String SYMBOL="symbol";
    String IS_CHECK_STOCK_SYMBOL= "is_check_stock_symbol";
+    String STOCK_COMPARE_DATE_FORMAT="dd/MM/yy";
 }

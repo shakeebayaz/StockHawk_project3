@@ -27,10 +27,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.digital.ayaz.stockhawk.ui.StockDetails"/>
+        <activity android:name=".ui.StockDetailsActivity"
+            android:label="@string/detail_quote"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.MainActivity"/>
 
         <service
             android:name="com.digital.ayaz.stockhawk.sync.StockIntentService"
+
             android:exported="false" />
 
         <provider

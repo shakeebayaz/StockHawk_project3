@@ -33,7 +33,7 @@
     <string name="last_tradedate" translatable="true">Last Trade Date</string>
     <string name="fetching_history" translatable="true">Fetching stock history...</string>
     <string name="equity" translatable="false">Equity</string>
-    <string name="last_one_year" translatable="true">Last one year euity Comparison</string>
+    <string name="last_one_year" translatable="true">Last one year eqity Comparison</string>
     <string name="list_equity" translatable="true">List of Equity</string>
     <string name="units_description" translatable="true">Change in % increase or decrease to actual increase or decrease</string>
     <string name="no_data_show" translatable="true">No data to show</string>
@@ -52,6 +52,7 @@
     <dimen name="padding_3dp">2dp</dimen>
     <dimen name="padding_10dp">8sp</dimen>
     <string name="stock_widget_name">Stock Widget</string>
+    <string name="detail_quote">Detail Quote</string>
 
     <dimen name="widget_width">350dp</dimen>
     <dimen name="widget_height">250dp</dimen>
