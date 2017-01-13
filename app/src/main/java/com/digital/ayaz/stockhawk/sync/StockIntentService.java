@@ -22,19 +22,15 @@ public class StockIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        boolean isCheckStockSymbol = false;
-        isCheckStockSymbol = intent.getBooleanExtra(Constants.IS_CHECK_STOCK_SYMBOL, false);
-        if (isCheckStockSymbol) {
-
-            String symbol = intent.getStringExtra(Constants.EXTRA_SYMBOL);
-            boolean isStockFound = QuoteSyncJob.isStockFound(symbol, getApplicationContext());
+        boolean isEquityExist = false;
+        isEquityExist = intent.getBooleanExtra(Constants.IS_CHECK_STOCK_SYMBOL, false);
+        if (isEquityExist) {
             Intent dataUpdaInt = new Intent(QuoteSyncJob.ACTION_STOCK_EXIST);
-            dataUpdaInt.putExtra(Constants.IS_STOCK_EXIST, isStockFound);
-            dataUpdaInt.putExtra(Constants.SYMBOL, symbol);
+            dataUpdaInt.putExtra(Constants.IS_STOCK_EXIST, QuoteSyncJob.isStockFound(intent.getStringExtra(Constants.EXTRA_SYMBOL)));
+            dataUpdaInt.putExtra(Constants.SYMBOL, intent.getStringExtra(Constants.EXTRA_SYMBOL));
             LocalBroadcastManager.getInstance(this).sendBroadcast(dataUpdaInt);
         } else if (intent.getBooleanExtra(Constants.IS_GET_HISTORY, false)) {
-            String equitysign= intent.getStringExtra(Constants.EXTRA_SYMBOL);
-            Stock equity = QuoteSyncJob.getHistory(equitysign);
+            Stock equity = QuoteSyncJob.getHistory(intent.getStringExtra(Constants.EXTRA_SYMBOL));
             StockDetailsActivity.mStock = equity;
             Intent dataUpdaInt = new Intent(QuoteSyncJob.ACTION_STOCK_HISTORY);
             LocalBroadcastManager.getInstance(this).sendBroadcast(dataUpdaInt);

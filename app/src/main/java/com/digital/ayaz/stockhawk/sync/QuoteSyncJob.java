@@ -45,15 +45,15 @@ public final class QuoteSyncJob {
         Calendar to = Calendar.getInstance();
         from.add(Calendar.YEAR, -2);
         try {
-            Set<String> stockPref = Preference.getInstance(context).getStocks();
-            Set<String> stockCopy = new HashSet<>();
-            stockCopy.addAll(stockPref);
-            String[] stockArray = stockPref.toArray(new String[stockPref.size()]);
+            Set<String> equityPref = Preference.getInstance(context).getStocks();
+            Set<String> equityCopy = new HashSet<>();
+            equityCopy.addAll(equityPref);
+            String[] stockArray = equityPref.toArray(new String[equityPref.size()]);
             if (stockArray.length == 0) {
                 return;
             }
             Map<String, Stock> quotes = YahooFinance.get(stockArray);
-            Iterator<String> iterator = stockCopy.iterator();
+            Iterator<String> iterator = equityCopy.iterator();
             ArrayList<ContentValues> quoteCVs = new ArrayList<>();
 
             while (iterator.hasNext()) {
@@ -96,17 +96,17 @@ public final class QuoteSyncJob {
         }
     }
 
-    public static boolean isStockFound(String stockSymbol, Context context) {
+    public static boolean isStockFound(String stockSymbol) {
         try {
-            Set<String> stockPref = new HashSet<>();
-            stockPref.add(stockSymbol);
+            Set<String> equityPref = new HashSet<>();
+            equityPref.add(stockSymbol);
             Set<String> stockCopy = new HashSet<>();
             stockCopy.addAll(stockCopy);
-            String[] stockArray = stockPref.toArray(new String[stockPref.size()]);
-            if (stockArray.length == 0) {
+            String[]equity_arr = equityPref.toArray(new String[equityPref.size()]);
+            if (equity_arr.length == 0) {
                 return false;
             }
-            Map<String, Stock> quotes = YahooFinance.get(stockArray);
+            Map<String, Stock> quotes = YahooFinance.get(equity_arr);
             Stock stock = quotes.get(stockSymbol);
             StockQuote quote = stock.getQuote();
             if (quote != null && quote.getPrice() != null) {
@@ -165,17 +165,17 @@ public final class QuoteSyncJob {
         Calendar to = Calendar.getInstance();
         from.add(Calendar.YEAR, -1);
         try {
-            Set<String> stockPref = new HashSet<>();
-            stockPref.add(symbol);
-            Set<String> stockCopy = new HashSet<>();
-            stockCopy.addAll(stockCopy);
-            String[] stockArray = stockPref.toArray(new String[stockPref.size()]);
+            Set<String> equityPref = new HashSet<>();
+            equityPref.add(symbol);
+            Set<String> equityCopy = new HashSet<>();
+            equityCopy.addAll(equityCopy);
+            String[] equityArray = equityPref.toArray(new String[equityPref.size()]);
 
-            if (stockArray.length == 0) {
+            if (equityArray.length == 0) {
                 return stock;
             }
 
-            Map<String, Stock> quotes = YahooFinance.get(stockArray);
+            Map<String, Stock> quotes = YahooFinance.get(equityArray);
             stock = quotes.get(symbol);
             stock.getHistory(from, to, Interval.WEEKLY);
 
