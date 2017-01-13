@@ -28,16 +28,16 @@ public class StockIntentService extends IntentService {
 
             String symbol = intent.getStringExtra(Constants.EXTRA_SYMBOL);
             boolean isStockFound = QuoteSyncJob.isStockFound(symbol, getApplicationContext());
-            Intent dataUpdatedIntent = new Intent(QuoteSyncJob.ACTION_STOCK_EXIST);
-            dataUpdatedIntent.putExtra(Constants.IS_STOCK_EXIST, isStockFound);
-            dataUpdatedIntent.putExtra(Constants.SYMBOL, symbol);
-            LocalBroadcastManager.getInstance(this).sendBroadcast(dataUpdatedIntent);
+            Intent dataUpdaInt = new Intent(QuoteSyncJob.ACTION_STOCK_EXIST);
+            dataUpdaInt.putExtra(Constants.IS_STOCK_EXIST, isStockFound);
+            dataUpdaInt.putExtra(Constants.SYMBOL, symbol);
+            LocalBroadcastManager.getInstance(this).sendBroadcast(dataUpdaInt);
         } else if (intent.getBooleanExtra(Constants.IS_GET_HISTORY, false)) {
-            String symbol = intent.getStringExtra(Constants.EXTRA_SYMBOL);
-            Stock stock = QuoteSyncJob.getHistory(symbol);
-            StockDetailsActivity.mStock = stock;
-            Intent dataUpdatedIntent = new Intent(QuoteSyncJob.ACTION_STOCK_HISTORY);
-            LocalBroadcastManager.getInstance(this).sendBroadcast(dataUpdatedIntent);
+            String equitysign= intent.getStringExtra(Constants.EXTRA_SYMBOL);
+            Stock equity = QuoteSyncJob.getHistory(equitysign);
+            StockDetailsActivity.mStock = equity;
+            Intent dataUpdaInt = new Intent(QuoteSyncJob.ACTION_STOCK_HISTORY);
+            LocalBroadcastManager.getInstance(this).sendBroadcast(dataUpdaInt);
 
         } else {
 
